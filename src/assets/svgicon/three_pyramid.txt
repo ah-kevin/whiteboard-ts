@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="10 10 280 280" style="enable-background:new 0 0 280 280;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#4683FF;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#4683FF;stroke-width:3;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#4683FF;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:3,3;}
+</style>
+<line id="XMLID_10" class="st0" x1="149" y1="28" x2="26" y2="212.5"/>
+<line id="XMLID_10_1_" class="st1" x1="149" y1="28" x2="272" y2="212.5"/>
+<line id="XMLID_10_2_" class="st1" x1="149" y1="28" x2="149" y2="274"/>
+<line id="XMLID_10_3_" class="st1" x1="149" y1="274" x2="26" y2="212.5"/>
+<line id="XMLID_10_4_" class="st0" x1="149" y1="274" x2="272" y2="212.5"/>
+<line id="XMLID_10_5_" class="st2" x1="26" y1="212.5" x2="272" y2="212.5"/>
+</svg>

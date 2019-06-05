@@ -1,0 +1,120 @@
+.board-editor {
+  position: relative;
+  font-family: 'Microsoft YaHei';
+  touch-action: none;
+  height: 100%;
+  .board-canvases {
+    height: 100%;
+    width: 100%;
+  }
+  .board-selector,
+  .board-rulerdrawing {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+  }
+
+  canvas,
+  svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+  svg {
+    path {
+      transition: all ease-in 0.5s;
+    }
+  }
+  canvas {
+    &.rendering-canvas {
+      z-index: 10;
+      /* pointer-events: none; */
+    }
+    &.board-canvas-temporary {
+      pointer-events: none;
+    }
+  }
+
+  .loader {
+    z-index: 30;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: calc(50% - 60px);
+    left: calc(50% - 60px);
+    border: 16px solid #f5f6f7;
+    border-radius: 50%;
+    border-top-color: #1a9fff;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
+  .removed-stroke {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+  }
+
+  .added-stroke {
+    animation: 0.2s opacity-appear;
+  }
+}
+.eraser {
+  position: fixed;
+  width: 64px;
+  height: 96px;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url(../../assets/images/eraser-middle.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+
+  &.eraser-small {
+    background-image: url(../../assets/images/eraser-small.png);
+  }
+  &.eraser-middle {
+    background-image: url(../../assets/images/eraser-middle.png);
+  }
+  &.eraser-large {
+    background-image: url(../../assets/images/eraser-large.png);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25) {
+  .eraser {
+    width: 51px;
+    height: 77px;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .eraser {
+    width: 43px;
+    height: 64px;
+  }
+}
+.eraser-cursor {
+  canvas {
+    cursor: none;
+  }
+}
+@keyframes opacity-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

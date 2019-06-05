@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width:309px; height:302px" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#4683FF;stroke-width:3;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#4683FF;stroke-width:3;stroke-miterlimit:10;stroke-dasharray: 3 3;}
+</style>
+<line id="XMLID_1" class="st0" x1="100" y1="100" x2="145" y2="55"/>
+<line id="XMLID_2" class="st0" x1="100" y1="100" x2="100" y2="250"/>
+<line id="XMLID_3" class="st0" x1="100" y1="100" x2="325" y2="100"/>
+
+
+<line id="XMLID_4" class="st0" x1="370" y1="55" x2="145" y2="55"/>
+<line id="XMLID_5" class="st0" x1="370" y1="55" x2="370" y2="205"/>
+<line id="XMLID_6" class="st0" x1="370" y1="55" x2="325" y2="100"/>
+
+<line id="XMLID_7" class="st0" x1="325" y1="250" x2="100" y2="250"/>
+<line id="XMLID_8" class="st0" x1="325" y1="250" x2="325" y2="100"/>
+<line id="XMLID_9" class="st0" x1="325" y1="250" x2="370" y2="205"/>
+
+<line id="XMLID_10" class="st1" x1="145" y1="205" x2="145" y2="55"/>
+<line id="XMLID_11" class="st1" x1="145" y1="205" x2="100" y2="250"/>
+<line id="XMLID_12" class="st1" x1="145" y1="205" x2="370" y2="205"/>
+</svg>

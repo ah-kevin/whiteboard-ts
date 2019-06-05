@@ -6509,6 +6509,11 @@ terser@^4.0.0:
     source-map "~0.6.1"
     source-map-support "~0.5.10"
 
+three@^0.105.2:
+  version "0.105.2"
+  resolved "http://192.168.76.61:4873/three/-/three-0.105.2.tgz#d135f1549bdcf5a9acd904ba3dbf9198a0268984"
+  integrity sha1-0TXxVJvc9ams2QS6Pb+RmKAmiYQ=
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "http://192.168.76.61:4873/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
