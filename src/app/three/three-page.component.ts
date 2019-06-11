@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AxesHelper, BufferGeometry,
-  CircleGeometry, DirectionalLight, DoubleSide, Face3, FlatShading, Geometry,
-  LineBasicMaterial, Mesh, MeshBasicMaterial, MeshPhongMaterial,
+  CircleGeometry, Color, DirectionalLight, DoubleSide, Face3, FlatShading, Float32BufferAttribute, Geometry, Group,
+  LineBasicMaterial, LineSegments, Mesh, MeshBasicMaterial, MeshPhongMaterial,
   Object3D,
   OrthographicCamera,
   PerspectiveCamera, PointLight,
@@ -11,7 +11,6 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { TimelineLite, Power0 } from 'gsap';
-import { range } from 'rxjs';
 
 
 @Component({
@@ -19,7 +18,7 @@ import { range } from 'rxjs';
   templateUrl: './three-page.component.html',
   styleUrls: ['./three-page.component.less']
 })
-export class ThreePageComponent implements OnInit {
+export class ThreePageComponent implements OnInit, OnDestroy {
   private radius = 3;
   private height = 6;
   private segments = 200;
@@ -45,6 +44,11 @@ export class ThreePageComponent implements OnInit {
   private w: Vector3[];
   private range: HTMLInputElement;
 
+  ngOnDestroy(): void {
+    console.log(222);
+    this.tl = null;
+  }
+
   constructor() {
   }
 
@@ -65,7 +69,7 @@ export class ThreePageComponent implements OnInit {
     this.range.value = '0';
     data.container.appendChild(this.range);
 
-    this.renderer = data.renderer;
+    this.renderer = Object.assign({}, data.renderer);
     this.setScene(data.width, data.height);
     // console.log(this.scene);
 
