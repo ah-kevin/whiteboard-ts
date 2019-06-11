@@ -10,7 +10,9 @@ import {
   WebGLRenderer
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { TimelineLite } from 'gsap';
+import { TimelineLite, Power0 } from 'gsap';
+import { range } from 'rxjs';
+
 
 @Component({
   selector: 'three-page',
@@ -36,14 +38,33 @@ export class ThreePageComponent implements OnInit {
     circle2: Math.PI / 2
   };
   private wrapper: Mesh;
+  private button: HTMLButtonElement;
+  private tl: gsap.TimelineLite;
+  private segLength = Math.PI * 2 * this.radius / this.segments;
+  i = 0;
+  private w: Vector3[];
+  private range: HTMLInputElement;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.tl = new TimelineLite();
   }
 
   configureThree(data: { container: HTMLElement; renderer: WebGLRenderer; width: number; height: number }) {
+    this.button = document.createElement('button');
+    this.button.innerHTML = 'wrap';
+    data.container.appendChild(this.button);
+
+    this.range = document.createElement('input');
+    this.range.type = 'range';
+    this.range.min = '0';
+    this.range.max = '1';
+    this.range.step = '0.001';
+    this.range.value = '0';
+    data.container.appendChild(this.range);
+
     this.renderer = data.renderer;
     this.setScene(data.width, data.height);
     // console.log(this.scene);
@@ -78,7 +99,8 @@ export class ThreePageComponent implements OnInit {
     this.parent.position.set(-this.radius, this.height / 2, 0);
     this.parent.rotation.y = Math.PI;
     this.scene.add(this.parent);
-    console.log(this.scene);
+
+    this.setAnimation();
     // 渲染
     this.renderer.render(this.scene, this.camera);
   }
@@ -144,14 +166,14 @@ export class ThreePageComponent implements OnInit {
 
   private addWrapper() {
     const geo = new Geometry();
-    const segLength = Math.PI * 2 * this.radius / this.segments;
+
     geo.vertices.push(new Vector3(0, this.height / 2, 0));
     geo.vertices.push(new Vector3(0, -this.height / 2, 0));
     for (let i = 0; i < Math.floor(this.segments / 2); i++) {
-      geo.vertices.push(new Vector3(0, this.height / 2, segLength * i));
-      geo.vertices.push(new Vector3(0, -this.height / 2, segLength * i));
-      geo.vertices.push(new Vector3(0, this.height / 2, -segLength * i));
-      geo.vertices.push(new Vector3(0, -this.height / 2, -segLength * i));
+      geo.vertices.push(new Vector3(0, this.height / 2, this.segLength * i));
+      geo.vertices.push(new Vector3(0, -this.height / 2, this.segLength * i));
+      geo.vertices.push(new Vector3(0, this.height / 2, -this.segLength * i));
+      geo.vertices.push(new Vector3(0, -this.height / 2, -this.segLength * i));
     }
     geo.faces.push(new Face3(0, 1, 2));
     geo.faces.push(new Face3(1, 2, 3));
@@ -166,4 +188,63 @@ export class ThreePageComponent implements OnInit {
     this.wrapper = new Mesh(geo, this.material);
     this.parent.add(this.wrapper);
   }
+
+  private setAnimation() {
+    this.tl.to(this.tween, this.animationDuration, {
+      angle: Math.PI / this.segments,
+      circle1: 0,
+      circle2: 0,
+      ease: Power0.easeNone,
+      onUpdate: () => this.update(),
+      onComplete: () => {
+        console.log('动画结束了');
+        this.tl.pause();
+      }
+    });
+    this.tl.progress(1);
+    setTimeout(() => {
+      this.tl.reverse();
+    }, 800);
+    this.range.addEventListener('input', () => {
+      this.tl.pause();
+      this.tl.progress(+this.range.value);
+      this.button.innerHTML = this.tl.progress() > .5 ? 'unwrap' : 'wrap';
+    }, false);
+    this.button.addEventListener('click', () => {
+      this.tl.progress() > 0.5 ? this.tl.reverse() : this.tl.play();
+    });
+  }
+
+  private update() {
+    // console.log('更新变化');
+    // 变化2个圆 设置初始
+    this.circle1.rotation.y = this.tween.circle1;
+    this.circle2.rotation.y = this.tween.circle2;
+    // 变化平面
+    this.w = (this.wrapper.geometry as Geometry).vertices;
+    this.w[2].x = this.w[3].x = this.w[4].x = this.w[5].x = -Math.sin(this.tween.angle) * this.segLength;
+    this.w[2].z = this.w[3].z = Math.cos(this.tween.angle) * this.segLength;
+    this.w[4].z = this.w[5].z = -Math.cos(this.tween.angle) * this.segLength;
+    for (let i = 6; i < this.w.length; i++) {
+      this.updateWrapper(i);
+    }
+    // 其余的顶点现在可以引用第四个前一个顶点，它们在算法中的引用
+    // 重新渲染
+    (this.wrapper.geometry as Geometry).verticesNeedUpdate = true;
+    this.renderer.render(this.scene, this.camera);
+
+    // ui
+    this.range.value = this.tl.progress().toString();
+    this.button.innerHTML = this.tl.progress() > .5 ? 'unwrap' : 'wrap';
+  }
+
+  private updateWrapper(vIndex) {
+    // 来自的哪个面的顶点所属的原点
+    const segIndex = Math.floor((vIndex + 2) / 4);
+    const negate = (vIndex / 4 === Math.floor(vIndex / 4) || (vIndex - 1) / 4 === Math.floor((vIndex - 1) / 4)) ? -1 : 1;
+
+    this.w[vIndex].x = this.w[vIndex - 4].x - Math.sin(this.tween.angle * (negate * (2 * segIndex - 1))) * this.segLength * negate;
+    this.w[vIndex].z = this.w[vIndex - 4].z + Math.cos(this.tween.angle * (negate * (2 * segIndex - 1))) * this.segLength * negate;
+  }
+
 }
