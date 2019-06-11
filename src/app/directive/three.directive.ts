@@ -15,7 +15,7 @@ export class ThreeDirective implements AfterViewInit {
     const box = hostElement.getBoundingClientRect();
     const renderer = new WebGLRenderer();
     renderer.setSize(box.width, box.height);
-    renderer.setClearColor(0xb9d3ff, 1); // 设置背景颜色
+    // renderer.setClearColor(0xb9d3ff, 1); // 设置背景颜色
     hostElement.appendChild(renderer.domElement);
     this.configure.emit({
       container: hostElement,
