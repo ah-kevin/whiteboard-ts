@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AxesHelper, BufferGeometry,
   CircleGeometry, Color, DirectionalLight, DoubleSide, Face3, FlatShading, Float32BufferAttribute, Geometry, Group,
-  LineBasicMaterial, LineSegments, Mesh, MeshBasicMaterial, MeshPhongMaterial,
+  LineBasicMaterial, LineSegments, Mesh, MeshPhongMaterial,
   Object3D,
   OrthographicCamera,
   PerspectiveCamera, PointLight,
@@ -10,8 +10,7 @@ import {
   WebGLRenderer
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { TimelineLite, Power0 } from 'gsap';
-
+import { Power0, TimelineLite } from 'gsap/all';
 
 @Component({
   selector: 'three-page',
@@ -38,7 +37,7 @@ export class ThreePageComponent implements OnInit, OnDestroy {
   };
   private wrapper: Mesh;
   private button: HTMLButtonElement;
-  private tl: gsap.TimelineLite;
+  private tl: TimelineLite;
   private segLength = Math.PI * 2 * this.radius / this.segments;
   i = 0;
   private w: Vector3[];

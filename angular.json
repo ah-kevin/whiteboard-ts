@@ -30,7 +30,9 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/gsap/src/uncompressed/TimelineLite.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
