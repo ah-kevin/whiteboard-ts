@@ -46,6 +46,14 @@ export class ThreePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log(222);
+    this.parent = null;
+    this.scene = null;
+    this.camera = null;
+    this.renderer = null;
+    this.material = null;
+    this.circle1 = null;
+    this.circle2 = null;
+    this.controls = null;
     this.tl = null;
   }
 

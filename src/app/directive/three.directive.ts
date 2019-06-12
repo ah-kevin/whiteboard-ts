@@ -28,6 +28,7 @@ export class ThreeDirective implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.renderer.dispose();
+    this.renderer.vr.dispose();
     this.renderer = null;
   }
 
