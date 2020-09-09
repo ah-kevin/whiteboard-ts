@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 220 250" style="enable-background:new 0 0 220 250;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#4683FF;stroke-width:3;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#4683FF;stroke-width:3;stroke-miterlimit:10;stroke-dasharray: 3 3;}
+</style>
+<line id="XMLID_3_" class="st0" x1="204.5" y1="37.5" x2="204.5" y2="212.6"/>
+<line id="XMLID_7_" class="st0" x1="11.4" y1="37.5" x2="11.4" y2="212.6"/>
+<path id="XMLID_2_" class="st0" d="M204.5,39.1c0,17.8-43.2,32.2-96.5,32.2S11.4,56.9,11.4,39.1"/>
+<path id="XMLID_1_" class="st0" d="M204.5,39.2c0-17.8-43.2-32.2-96.5-32.2S11.4,21.4,11.4,39.2"/>
+<path id="XMLID_5_" class="st0" d="M204.5,212.6c0,17.8-43.2,32.2-96.5,32.2s-96.5-14.4-96.5-32.2"/>
+<path id="XMLID_4_" class="st1" d="M204.5,212.6c0-17.8-43.2-32.2-96.5-32.2s-96.5,14.4-96.5,32.2"/>
+</svg>

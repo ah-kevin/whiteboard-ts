@@ -1,0 +1,5 @@
+{
+  "pathData":"M0,10 L0,0 L10,10 Z",
+  "strokeColor": "#4683FF",
+  "color":"#4683FF"
+}

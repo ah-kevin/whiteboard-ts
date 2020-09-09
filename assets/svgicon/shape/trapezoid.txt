@@ -1,0 +1,7 @@
+{
+  "pathData":"M10,0 L30,0 L40,10 L0,10 Z",
+  "color": "#4683FF",
+  "strokeColor": "#4683FF",
+  "width": 0,
+  "height": 0
+}
